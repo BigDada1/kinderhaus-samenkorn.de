@@ -34,17 +34,23 @@ $config->useFunctionsAPI = true;
 // Use custom Page classes in /site/classes/ ? (i.e. template "home" => HomePage.php)
 $config->usePageClasses = true;
 
+/**
+ * Fix for current locale
+ *
+ */
+setlocale(LC_ALL, 'de_DE.UTF-8');
+
 // Use Markup Regions? (https://processwire.com/docs/front-end/output/markup-regions/)
-$config->useMarkupRegions = true;
+// $config->useMarkupRegions = true;
 
 // Prepend this file in /site/templates/ to any rendered template files
-$config->prependTemplateFile = '_init.php';
+// $config->prependTemplateFile = '_init.php';
 
 // Append this file in /site/templates/ to any rendered template files
-$config->appendTemplateFile = '_main.php';
+// $config->appendTemplateFile = '_main.php';
 
 // Allow template files to be compiled for backwards compatibility?
-$config->templateCompile = false;
+// $config->templateCompile = false;
 
 /*** INSTALLER CONFIG ********************************************************************/
 /**
