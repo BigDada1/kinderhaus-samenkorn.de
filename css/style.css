@@ -57,7 +57,7 @@
 }
 
 a {
-  color: #e76f51;
+  color: #2f5aae;
   /* default color */
 }
 
@@ -158,7 +158,7 @@ blockquote h6::before {
   font-weight: 600;
   text-transform: uppercase;
   font-size: .8rem;
-  color: #e76f51;
+  color: #2f5aae;
   /* default color */
   text-align: center;
   line-height: 5em;
@@ -209,7 +209,7 @@ table caption {
 }
 
 .slider .indicators .indicator-item.active {
-  background-color: #e76f51;
+  background-color: #2f5aae;
   /* default color */
 }
 
@@ -324,7 +324,7 @@ table caption {
 }
 
 .section.highlight.major {
-  background-color: #e76f51;
+  background-color: #2f5aae;
   /* default color */
   color: white;
 }
@@ -338,7 +338,7 @@ table caption {
 
 /* cards */
 .card .material-icons {
-  color: #e76f51;
+  color: #2f5aae;
   /* default color */
 }
 
@@ -363,7 +363,7 @@ a.card {
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating).mail {
   text-transform: none;
-  color: #e76f51;
+  color: #2f5aae;
 }
 
 a.card h5 {
@@ -532,7 +532,7 @@ a.card p.header {
   font-weight: 600;
   text-transform: uppercase;
   font-size: .8rem;
-  color: #e76f51;
+  color: #2f5aae;
   /* default color */
 }
 
@@ -584,7 +584,7 @@ a.card p.header {
   position: absolute;
   top: .5rem;
   right: .5rem;
-  background: #e76f51;
+  background: #2f5aae;
   /* default color */
   color: white;
   line-height: 22px;
@@ -797,16 +797,16 @@ form {
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
 .select-wrapper input.select-dropdown:focus {
-  border-bottom: 1px solid #e76f51;
+  border-bottom: 1px solid #2f5aae;
   /* default color */
-  box-shadow: 0 1px 0 0 #e76f51;
+  box-shadow: 0 1px 0 0 #2f5aae;
   /* default color */
 }
 
 [type="checkbox"]:checked+span:not(.lever):before {
-  border-right: 2px solid #e76f51;
+  border-right: 2px solid #2f5aae;
   /* default color */
-  border-bottom: 2px solid #e76f51;
+  border-bottom: 2px solid #2f5aae;
   /* default color */
 }
 
@@ -816,7 +816,7 @@ textarea {
 }
 
 .btn {
-  background-color: #e76f51;
+  background-color: #2f5aae;
   /* default color */
 }
 
@@ -882,7 +882,7 @@ textarea {
 /* Navigation + Toolbar + Branding */
 nav {
   height: 128px;
-  background-color: #e76f51;
+  background-color: #2f5aae;
   /* default color */
 }
 
@@ -935,7 +935,7 @@ nav a.sidenav-trigger {
 
 .dropdown-content li>a,
 .dropdown-content li>span {
-  color: #e76f51;
+  color: #2f5aae;
   /* default color */
 }
 
@@ -976,7 +976,7 @@ nav li.active ul {
 
 .sidenav .collapsible-body>ul:not(.collapsible)>li.active,
 .pagination li.active {
-  background-color: #e76f51;
+  background-color: #2f5aae;
   /* default color */
 }
 
@@ -1019,7 +1019,7 @@ footer {
 }
 
 footer.page-footer {
-  background-color: #e76f51;
+  background-color: #2f5aae;
   /* default color */
 }
 
