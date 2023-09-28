@@ -8,3 +8,11 @@ This is the **Kinderhaus Samenkorn** website dev repo.
 
 * [Materialize](https://github.com/materializecss/materialize)
 * [ProcessWire](https://processwire.com)
+
+## More tools
+
+* [CSS Minifier](https://www.toptal.com/developers/cssminifier)
+* [Favicon Generator](https://realfavicongenerator.net)
+* [JS Minifier](https://www.toptal.com/developers/javascript-minifier)
+* [Social Share Preview](https://www.opengraph.xyz)
+* [SVG Minifier](https://www.svgminify.com)
