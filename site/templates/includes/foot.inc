@@ -1,3 +1,4 @@
+  </div>
   <footer class="page-footer">
     <div class="row valign-wrapper">
       <div class="col s6 right-align"><?php echo $siteLogo ?></div>

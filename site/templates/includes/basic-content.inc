@@ -1,76 +1,61 @@
-<header>
-  <h1><?
-echo $page->title;
-if ($page->editable())
-{
-  echo " <a href='{$page->editUrl}' title='\"{$page->title}\" bearbeiten'>✎</a>";
-}
-?></h1>
-<?
-$width = 1200;
-$height = 440;
-if ($page->template == "parish" || $page->template == "kindergarden")
-{
-  $imageUrl = "/assets/img/churches/default.png";
-  if(count($page->image))
-  {
-    $imageUrl = $page->image->first()->size($width, $height)->HTTPURL;
-  }
-  echo "<span class=\"image main\"><img src=\"$imageUrl\" alt=\"{$page->title}\"></span>";
-}
+<div class="section">
+  <div class="row">
+    <h5>
+      <? echo $page->get('title_long|title') ?>
+      <? if ($page->editable()): ?>
+      <a href="<? echo $page->editUrl ?>" title="'<? echo $page->title ?>' bearbeiten">✎</a>
+      <? endif; ?>
+    </h5>
+    <? if ($page->abstract): ?>
+    <p class="abstract"><? echo $page->abstract ?></p>
+    <? endif; ?>
+  </div>
 
-echo $page->body;
+  <div class="row">
+    <? foreach($page->content as $content): ?>
+    <? if ($content->image): ?>
+    <div class="col m6 l5 offset-l1">
+      <div class="card">
+        <div class="card-image">
+          <img class="body-image" src="<? echo $content->image->size(550)->url ?>" alt="<? echo $content->image->image_description ?>">
+        </div>
+      </div>
+      <? if ($content->image->image_description): ?>
+      <p class="caption"><?
+        echo $content->image->image_description;
+        if ($content->image->copyright) {
+          echo " –&nbsp;© {$content->image->copyright}";
+        }
+        ?></p>
+      <? endif; ?>
+    </div>
+    <div class="col m6 l5">
+      <? echo $content->body ?>
+    </div>
+    <? else: ?>
+    <div class="col m8 offset-m2">
+      <? echo $content->body ?>
+    </div>
+    <? endif; ?>
+    <? endforeach; ?>
+  </div>
 
-if ($page->template == "parish" || $page->template == "kindergarden")
-{
-  echo "<hr>";
-}
+  <div class="row">
+    <div class="col center">
+      <? foreach($page->downloads as $file): ?>
+      <p>
+        <a class="action" href="<? echo $file->url ?>" target="_blank">
+          <i class="material-icons">file_download</i>
+          <? echo "{$file->get('description|basename')} ({$file->filesizeStr})"; ?>
+        </a>
+      </p>
+      <? endforeach; ?>
+    </div>
+  </div>
 
-if ($page->template == "parish" || $page->template == "kindergarden")
-{
-  $address = $page->address;
-  $phone = $page->phone;
-  $fax = $page->fax;
-  $email = $page->email;
-  $externalUrl = $page->external_url;
-  echo "<p>";
-  echo "<strong>{$page->title_long}</strong><br>";
-  if($address) {
-    echo "$address<br>";
-  }
-  if($phone) {
-    $internationalNumber = $phone;
-    if(substr($internationalNumber, 0, 1) === "0") {
-      $internationalNumber = substr_replace($internationalNumber, "+49", 0, 1);
-      $internationalNumber = str_replace(' ', '', $internationalNumber);
-    }
-    echo "Telefon: <a href=\"tel:$internationalNumber\">$phone</a>";
-    if($fax) {
-      echo " · Fax: $fax";
-    }
-    echo "<br>";
-  }
-  if($email) {
-    echo "<a href=\"mailto:$email\">$email</a><br>";
-  }
-  if($externalUrl) {
-     // in case scheme relative URI is passed, e.g., //www.google.com/
-     $input = trim($externalUrl, '/');
-
-     // If scheme not included, prepend it
-     if (!preg_match('#^http(s)?://#', $input)) {
-         $input = 'http://' . $input;
-     }
-
-     $urlParts = parse_url($input);
-
-     // remove www
-     $domain = preg_replace('/^www\./', '', $urlParts['host']);
-     echo "<a href=\"$externalUrl\" target=\"_blank\">$domain</a><br>";
-  }
-  echo "</p>";
-}
-?>
-</header>
-<hr>
-
+  <? if ($page != $home): ?>
+  <div class="col">
+    <p class="center"><a class="action" href="<? echo $page->parent->url ?>"><i class="material-icons">arrow_back</i><? echo $page->parent->title ?></a></p>
+  </div>
+  <? endif; ?>
+</div>

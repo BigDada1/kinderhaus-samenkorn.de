@@ -85,4 +85,4 @@ foreach ($home->children() as $child) {
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-
+  <div class="container">
