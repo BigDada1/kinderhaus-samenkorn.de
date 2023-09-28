@@ -16,3 +16,4 @@ This is the **Kinderhaus Samenkorn** website dev repo.
 * [JS Minifier](https://www.toptal.com/developers/javascript-minifier)
 * [Social Share Preview](https://www.opengraph.xyz)
 * [SVG Minifier](https://www.svgminify.com)
+* [W3C Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.kinderhaus-samenkorn.de)
