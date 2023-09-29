@@ -130,3 +130,8 @@ $config->httpHosts = array('chenker.kinderhaus-samenkorn.de', 'www.kinderhaus-sa
  */
 $config->debug = true;
 
+/**
+ * Increase the PHP memory_limit
+ *
+ */
+ini_set('memory_limit', '512M');
