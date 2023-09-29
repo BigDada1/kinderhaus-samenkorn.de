@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="row flex site-cards">
-    <? foreach($articles->children as $article): ?>
+    <? foreach($articles->children("limit=6") as $article): ?>
     <div class="col l4">
       <a class="card hoverable" href="<? echo $article->url ?>">
         <div class="card-image">
@@ -17,7 +17,7 @@
               echo $content->image->size(415, 415)->url;
             }
           }
-          ?>" alt="Abschluss Sommerprojekt">
+          ?>" alt="<? echo $article->title ?>">
         </div>
         <div class="card-content">
           <p class="header truncate"><? echo $article->date ?></p>
