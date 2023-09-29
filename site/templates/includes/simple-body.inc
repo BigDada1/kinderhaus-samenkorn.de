@@ -5,7 +5,7 @@
       <h5><? echo $page->get('title_long|title') ?></h5>
     </div>
     <div class="col m8 offset-m2 center">
-      <? echo $page->body ?>
+      <? echo str_replace("<p>", "<p class=\"abstract\">", $page->body) ?>
     </div>
   </div>
 </div>
