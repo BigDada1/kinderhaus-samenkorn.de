@@ -15,8 +15,9 @@
 
   <? /* Skip contents with missing first body */ ?>
   <? if ($page->content && $page->content->count() && $page->content->first()->body): ?>
+
+  <? foreach($page->content as $content): ?>
   <div class="row">
-    <? foreach($page->content as $content): ?>
     <? if ($content->image): ?>
     <div class="col m6 l5 offset-l1">
       <div class="card">
@@ -41,10 +42,12 @@
       <? echo $content->body ?>
     </div>
     <? endif; ?>
-    <? endforeach; ?>
+  </div>
+  <? endforeach; ?>
 
-    <? /* Template 'events' only */ ?>
-    <? if ($page->date): ?>
+  <? /* Template 'events' only */ ?>
+  <? if ($page->date): ?>
+  <div class="row">
     <div class="col l10 offset-l1">
       <p class="right"><em>— <?
       if ($page->author) {
@@ -53,9 +56,9 @@
       echo $page->date;
       ?></em></p>
     </div>
-    <? endif; ?>
-
   </div>
+  <? endif; ?>
+
   <? endif; ?>
 
   <? if ($page->downloads && $page->downloads->count()): ?>
@@ -76,7 +79,7 @@
   <? if ($page->hasChildren()): ?>
   <div class="row site-card">
     <div class="col">
-      <? foreach($page->children as $child): ?>
+      <? foreach($page->children("limit=3") as $child): ?>
       <a class="card hoverable" href="<? echo $child->url ?>">
         <?
         $imageUrl = "";
