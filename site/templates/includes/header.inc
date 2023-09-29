@@ -14,7 +14,7 @@ foreach ($home->children() as $child) {
   }
 }
 ?>
-  <nav role="navigation">
+  <nav>
     <div class="nav-wrapper container">
       <a id="logo-container" class="brand-logo" href="/"><?php echo $siteLogo ?></a>
       <ul class="nav-regular right hide-on-med-and-down">

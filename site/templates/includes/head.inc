@@ -1,4 +1,5 @@
 <?php
+
 // Set variables
 $home = $pages->get("/");
 $settings = $pages->findOne("template=settings, include=hidden");
@@ -14,8 +15,10 @@ $siteLogo = str_replace("%site_name%", $settings->site_title, $siteLogo);
 $navMobileLogo = str_replace("%fill%", "#000000", $siteLogo);
 $navMobileLogo = str_replace("st0", "st1", $navMobileLogo);
 $siteLogo = str_replace("%fill%", "#FFFFFF", $siteLogo);
+$articles = $home->findOne("template=article-list");
 ?>
-
+<!DOCTYPE html>
+<html lang="de">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -17,7 +17,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">Copyright &copy; <?php echo date("Y") ?>
-      <span class="hide-on-small-only"> · </span><br class="hide-on-med-and-up" />
+      <span class="hide-on-small-only"> · </span><br class="hide-on-med-and-up">
       <? echo $settings->copyright ?>
       </div>
     </div>
