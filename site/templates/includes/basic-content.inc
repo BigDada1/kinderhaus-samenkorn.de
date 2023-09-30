@@ -138,11 +138,15 @@
 </div>
 <? endif; ?>
 
-<? if ($page->hasChildren("template!=article-list")): ?>
+<? if ($page == $events || $page == $events->parent): ?>
+<? include("./events.inc"); ?>
+<? endif; ?>
+
+<? if ($page->hasChildren("template!=article-list,template!=events")): ?>
 <div class="section">
   <div class="row site-card">
     <div class="col">
-      <? foreach($page->children("template!=article-list") as $child): ?>
+      <? foreach($page->children("template!=article-list,template!=events") as $child): ?>
       <a class="card hoverable" href="<? echo $child->url ?>">
         <?
         $imageUrl = "";

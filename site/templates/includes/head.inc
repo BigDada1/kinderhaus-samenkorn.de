@@ -16,6 +16,7 @@ $navMobileLogo = str_replace("%fill%", "#000000", $siteLogo);
 $navMobileLogo = str_replace("st0", "st1", $navMobileLogo);
 $siteLogo = str_replace("%fill%", "#FFFFFF", $siteLogo);
 $articles = $home->findOne("template=article-list");
+$events = $home->findOne("template=events");
 ?>
 <!DOCTYPE html>
 <html lang="de">
