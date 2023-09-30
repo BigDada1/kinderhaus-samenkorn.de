@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <? /* Skip contents with missing first body */ ?>
-  <? if ($page->content && $page->content->count() && $page->content->first()->body): ?>
+  <? /* Skip contents with missing first body or first icon list */ ?>
+  <? if ($page->content && $page->content->count() && ($page->content->first()->body || $page->content->first()->icon_list->count())): ?>
 
   <? foreach($page->content as $content): ?>
   <div class="row">
@@ -36,10 +36,34 @@
     </div>
     <div class="col m6 l5">
       <? echo $content->body ?>
+      <? if ($content->icon_list->count()): ?>
+      <table>
+        <? foreach($content->icon_list as $icon_list_item): ?>
+        <tr><td><i class="material-icons"><? echo $icon_list_item->icon ?></i></td><td><?
+        $text = $icon_list_item->icon_list_text;
+        $text = str_replace("<p>", "", $text);
+        $text = str_replace("</p>", "<br>", $text);
+        echo $text;
+        ?></td></tr>
+        <? endforeach; ?>
+      </table>
+      <? endif; ?>
     </div>
     <? else: ?>
     <div class="col m8 offset-m2">
       <? echo $content->body ?>
+      <? if ($content->icon_list->count()): ?>
+      <table>
+        <? foreach($content->icon_list as $icon_list_item): ?>
+        <tr><td><i class="material-icons"><? echo $icon_list_item->icon ?></i></td><td><?
+          $text = $icon_list_item->icon_list_text;
+          $text = str_replace("<p>", "", $text);
+          $text = str_replace("</p>", "<br>", $text);
+          echo $text;
+          ?></td></tr>
+        <? endforeach; ?>
+      </table>
+      <? endif; ?>
     </div>
     <? endif; ?>
   </div>
