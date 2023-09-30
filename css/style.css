@@ -203,52 +203,15 @@ table caption {
   font-weight: 600;
 }
 
-/* slider */
-.slider {
-  /*   z-index: -1; */
-}
+/* carousel */
 
-.slider .indicators .indicator-item.active {
-  background-color: #2f5aae;
-  /* default color */
-}
-
-.slider .img {
-  overflow: hidden;
-  position: relative;
-  height: 350px;
-  /* same as defined in M.Slider.init, same as .slides */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  /*   border: 1px solid green; */
-}
-
-.slider .img .placeholder {
-  width: 20rem;
-  height: 20rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  object-fit: cover;
-  background-image: url('/css/logo/logo.svg');
-  opacity: 30%;
-  z-index: -1;
-}
-
-.slider .img .valign-wrapper {
+.carousel .carousel-item .valign-wrapper {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.slider .img .valign-wrapper .row {}
-
-.slider .img .valign-wrapper h2 {
+.carousel .carousel-item .valign-wrapper h2 {
   margin: 0 1rem 2rem 1rem;
   text-transform: uppercase;
   font-size: 2rem;
@@ -258,24 +221,12 @@ table caption {
 }
 
 @media only screen and (min-width: 601px) {
-  .slider .img .valign-wrapper h2 {
-    font-size: 4rem;
+  .carousel .carousel-item .valign-wrapper h2 {
+    font-size: 3rem;
   }
 }
 
-.slider .img .valign-wrapper p {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: white;
-}
-
-.slider .img .valign-wrapper p span {
-  padding: 1rem 0;
-}
-
-.slider .img .valign-wrapper a {
+.carousel .carousel-item .valign-wrapper a {
   display: inline-block;
   padding: .375rem .75rem;
   text-transform: uppercase;
@@ -287,13 +238,13 @@ table caption {
   border: 1px solid white;
 }
 
-.slider .img .valign-wrapper a:hover {
+.carousel .carousel-item .valign-wrapper a:hover {
   color: rgba(45, 45, 45, 1);
   background-color: white;
   border-color: white;
 }
 
-.slider a .material-icons {
+.carousel a .material-icons {
   font-size: 1rem;
   top: .2rem;
   position: relative;
