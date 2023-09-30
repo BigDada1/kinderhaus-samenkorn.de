@@ -240,18 +240,6 @@ table caption {
   z-index: -1;
 }
 
-@media only screen and (min-width: 601px) {
-  .slider .img {
-    /*     border: 1px solid aqua; */
-  }
-}
-
-@media only screen and (min-width: 993px) {
-  .slider .img {
-    /*     border: 1px solid red; */
-  }
-}
-
 .slider .img .valign-wrapper {
   width: 100%;
   height: 100%;
@@ -728,88 +716,6 @@ a.action:hover .material-icons {
   }
 }
 
-/* Form stuff */
-form {
-  padding-bottom: 2rem;
-}
-
-.form__item--scf-website {
-  left: -9999px;
-  position: absolute;
-  width: 0;
-}
-
-.form__item {
-  padding-top: 1.5rem;
-}
-
-.form__item--scf_select_event .form__item--label {
-  padding-bottom: 1rem;
-  display: block;
-}
-
-.form__item--scf_delivery_mail label:not(.form__item--label) {
-  padding-top: 1rem;
-  display: block;
-}
-
-.form__item--scf_delivery_mail .form__item--label {
-  padding-bottom: 0.8rem;
-}
-
-.form__item--scf_delivery_post .form__item--label,
-.form__item--scf_delivery_post .field--error--message {
-  display: none;
-}
-
-.form__item.form__item--scf_delivery_post {
-  padding-top: 0;
-}
-
-.field--error--message {
-  display: inline;
-  padding-left: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.form--error--message,
-.field--error--message {
-  color: red;
-}
-
-.highlight input[type=text]:not(.browser-default),
-.highlight input[type=email]:not(.browser-default),
-.highlight [type="checkbox"]+span:not(.lever):before,
-.highlight textarea {
-  background-color: white;
-}
-
-.highlight [type="checkbox"]:checked+span:not(.lever):before {
-  background-color: transparent;
-}
-
-.field--error--message+input[type=text]:not(.browser-default),
-.field--error--message+input[type=email]:not(.browser-default),
-.field--error--message+label .pw-no-select {
-  background-color: rgba(255, 0, 0, 0.2);
-}
-
-input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=email]:not(.browser-default):focus:not([readonly]),
-.select-wrapper input.select-dropdown:focus {
-  border-bottom: 1px solid #2f5aae;
-  /* default color */
-  box-shadow: 0 1px 0 0 #2f5aae;
-  /* default color */
-}
-
-[type="checkbox"]:checked+span:not(.lever):before {
-  border-right: 2px solid #2f5aae;
-  /* default color */
-  border-bottom: 2px solid #2f5aae;
-  /* default color */
-}
-
 textarea {
   border-color: rgb(158, 158, 158);
   height: inherit;
@@ -823,60 +729,6 @@ textarea {
 .btn:hover {
   background-color: rgba(0, 111, 184, 0.8);
   /* default color */
-}
-
-.form__item--submit {
-  text-align: center;
-}
-
-.input-field>label {
-  position: inherit;
-  /* restore default */
-  font-size: 0.8rem;
-  /* same like regular label */
-}
-
-.form-template-event .form__item--scf_delivery_mail {
-  display: none;
-}
-
-.form-template-event .form__item--scf_delivery_post {
-  display: none;
-}
-
-
-/* word of month */
-.col.word-of-month p:first-of-type {
-  margin-top: 6rem;
-}
-
-.col.word-of-month .tag {
-  line-height: 1.5;
-}
-
-.col.word-of-month .cite {
-  font-size: 1.6rem;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.col.word-of-month .cite::before {
-  content: "»";
-}
-
-.col.word-of-month .cite::after {
-  content: "«";
-}
-
-.col.word-of-month .author {
-  font-style: italic;
-}
-
-.col.word-of-month .author::before {
-  content: "— ";
-}
-
-.col.word-of-month p:last-of-type {
-  margin-bottom: 6rem;
 }
 
 /* Navigation + Toolbar + Branding */
@@ -914,7 +766,6 @@ nav .nav-wrapper i {
 }
 
 @media only screen and (max-width : 600px) {
-
   nav ul.right a,
   nav a.sidenav-trigger,
   nav a.sidenav-trigger i {
@@ -974,8 +825,11 @@ nav li.active ul {
   background-color: white;
 }
 
+.btn,
+.pagination li.active,
 .sidenav .collapsible-body>ul:not(.collapsible)>li.active,
-.pagination li.active {
+.slider .indicators .indicator-item-btn.active,
+footer.page-footer {
   background-color: #2f5aae;
   /* default color */
 }
@@ -1052,33 +906,4 @@ footer .col:first-of-type {
 
 footer a {
   color: white;
-}
-
-/* video-container */
-.video-container strong {
-  color: fuchsia;
-}
-
-.video-container .privacy-notice {
-  font-size: 80%;
-  margin: 1.2em;
-  padding: 1.2em;
-  background: rgba(255, 255, 255, .9);
-  overflow-y: auto;
-  height: 50%;
-  max-height: 17em;
-  display: block;
-  position: absolute;
-}
-
-.video-container .center {
-  position: absolute;
-  bottom: 5%;
-  left: 0;
-  right: 0;
-}
-
-.video-container .center a.action,
-.video-container .center a.action .material-icons {
-  font-size: 120%;
 }
