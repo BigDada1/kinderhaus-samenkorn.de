@@ -100,7 +100,7 @@ $icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=
         $result .= "<img src=\"$imageSrc\" alt=\"$eventTitle\">";
         $result .= "<div class=\"date-block\">";
         $formatter->setPattern('MMM');
-        $result .= "<div class=\"month\">{$formatter->format($startDate)}</div>";
+        $result .= "<div class=\"month\">". str_replace(".", "", $formatter->format($startDate)) . "</div>";
         $formatter->setPattern('d');
         $result .= "<div class=\"day\">{$formatter->format($startDate)}</div>";
         $formatter->setPattern('EEEEEE');
