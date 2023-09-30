@@ -5,6 +5,11 @@ if ($page == $events) {
   $sectionClass = "section";
   $eventLimit = 30;
 }
+$churchDeskApiVersion = $settings->churchdesk_api_version;
+$partnerToken = $settings->churchdesk_api_key;
+$organizationId = $settings->churchdesk_organization_id;
+$parishId = $settings->churchdesk_parish_id;
+$icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=$organizationId&cache=0";
 ?>
 <div class="<? echo $sectionClass ?>">
   <? if ($page != $events): ?>
@@ -14,14 +19,15 @@ if ($page == $events) {
       <h5><? echo $events->title ?></h5>
     </div>
   </div>
+  <? else: ?>
+  <div class="row">
+    <div class="col">
+      <p class="center">Alle Termine können Sie auch bequem im <a href="<? echo $icalFeed ?>">iCal-Format</a> in ihren digitalen Kalender integrieren.</p>
+    </div>
+  </div>
   <? endif; ?>
   <div class="row flex">
     <?
-    $churchDeskApiVersion = $settings->churchdesk_api_version;
-    $partnerToken = $settings->churchdesk_api_key;
-    $organizationId = $settings->churchdesk_organization_id;
-    $parishId = $settings->churchdesk_parish_id;
-
     $http = new ProcessWire\WireHttp();
     $response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100");
 
