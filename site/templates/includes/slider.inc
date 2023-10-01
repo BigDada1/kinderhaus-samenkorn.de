@@ -2,17 +2,34 @@
 <div class="section">
   <div class="carousel carousel-slider center">
     <? foreach($page->slider as $slide): ?>
-    <? if ($slide->content->count() && $slide->content->first()->image): ?>
-    <div class="carousel-item" href="#" style="background-image: url('<? echo $slide->content->first()->image->size(1280, 400)->url ?>')" >
+    <?
+    $imageUrl = "";
+    if ($slide->content && $slide->content->first()) {
+      $content = $slide->content->first();
+      if($content->image) {
+        $imageUrl = $content->image->size(1280, 400)->url;
+      }
+    }
+    if ($slide->images && $slide->images->first()) {
+      $image = $slide->images->first();
+      if($image) {
+        $imageUrl = $image->size(1280, 400)->url;
+      }
+    }
+    ?>
+    <? if ($imageUrl): ?>
+    <div class="carousel-item" href="#" style="background-image: url('<? echo $imageUrl ?>')" >
       <div class="valign-wrapper">
         <div class="row center">
           <h2><? echo $slide->get('title_long|title') ?></h2>
           <a class="hoverable" href="<? echo $slide->url ?>"><?
-            if ($slide->template == "article") {
-              echo "Weiterlesen";
-            } else {
-             echo $slide->title;
+            $label = $slide->title;
+            if($slide->template == "gallery") {
+              $label = "Ansehen";
+            } elseif ($slide->template == "article") {
+              $label = "Weiterlesen";
             }
+            echo $label;
           ?></a>
         </div>
       </div>

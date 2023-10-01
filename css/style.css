@@ -223,6 +223,7 @@ table caption {
 @media only screen and (min-width: 601px) {
   .carousel .carousel-item .valign-wrapper h2 {
     font-size: 3rem;
+    line-height: 1.5;
   }
 }
 

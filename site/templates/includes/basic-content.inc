@@ -156,6 +156,12 @@
             $imageUrl = $content->image->size(415, 415)->url;
           }
         }
+        if ($child->images && $child->images->first()) {
+          $image = $child->images->first();
+          if($image) {
+            $imageUrl = $image->size(415, 415)->url;
+          }
+        }
         ?>
         <div class="card-image">
           <? if ($imageUrl): ?>
@@ -172,7 +178,13 @@
           <? endif; ?>
         </div>
         <div class="card-action">
-          <p class="action"><i class="material-icons">arrow_forward</i> Weiterlesen</p>
+          <?
+          $label = "Weiterlesen";
+          if($child->template == "gallery") {
+            $label = "Ansehen";
+          }
+          ?>
+          <p class="action"><i class="material-icons">arrow_forward</i> <? echo $label ?></p>
         </div>
       </a>
       <? endforeach; ?>
@@ -180,6 +192,8 @@
   </div>
 </div>
 <? endif; ?>
+
+<? include("./gallery.inc"); ?>
 
 <? if ($page != $home): ?>
 <div class="section">
