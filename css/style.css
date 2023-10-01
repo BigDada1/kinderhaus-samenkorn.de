@@ -754,7 +754,6 @@ nav a.sidenav-trigger {
 }
 
 @media only screen and (max-width : 600px) {
-
   .brand-logo img,
   .brand-logo svg {
     margin: 12px 0px;
@@ -903,4 +902,15 @@ code[class*=language-] {
 
 .language-url.material-icons {
   top: 0;
+}
+
+/* Spotlight */
+.spotlight img {
+  width: 48%;
+}
+
+@media only screen and (min-width: 993px) {
+  .spotlight img {
+    width: 33%;
+  }
 }
