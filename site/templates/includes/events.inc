@@ -110,7 +110,7 @@ $icalFeed = $pages->findOne("template=event-feed,include=hidden")->httpUrl();
 
         $result .= "<div class=\"card-content\">";
         if ($summary || $description) {
-          $result .= "<span class=\"card-title activator\" title=\"Weitere Informationen\">$eventTitle<i class=\"material-icons right\">info_outline</i></span>";
+          $result .= "<span class=\"card-title activator\" title=\"Weitere Informationen\"><i class=\"material-icons right\">info_outline</i>$eventTitle</span>";
         } else {
           $result .= "<span class=\"card-title\">$eventTitle</span>";
         }
