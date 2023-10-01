@@ -25,5 +25,6 @@
 
   <script src="/js/materialize.min.js"></script>
   <script src="/js/init.js"></script>
+  <script src="/js/prism.js"></script>
 </body>
 </html>

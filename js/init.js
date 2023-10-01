@@ -29,3 +29,23 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.carousel');
   var instances = M.Carousel.init(elems, { fullWidth: true, indicators: true });
 });
+
+// Copy Button
+const copyBtn = Array.prototype.slice.call(
+  document.querySelectorAll(".copyButton")
+);
+const copiedText = Array.prototype.slice.call(
+  document.querySelectorAll(".copiedText")
+);
+const copyMsg = Array.prototype.slice.call(
+  document.querySelectorAll(".copyMessage")
+);
+copyBtn.forEach((copyBtn, i) => {
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(copiedText[i].innerText);
+    copyMsg[i].style.opacity = 1;
+    setTimeout(() => {
+      copyMsg[i].style.opacity = 0;
+    }, 2000);
+  });
+});

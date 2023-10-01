@@ -19,12 +19,6 @@ $icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=
       <h5><? echo $events->title ?></h5>
     </div>
   </div>
-  <? else: ?>
-  <div class="row">
-    <div class="col">
-      <p class="center">Alle Termine können Sie auch bequem im <a href="<? echo $icalFeed ?>">iCal-Format</a> in ihren digitalen Kalender integrieren.</p>
-    </div>
-  </div>
   <? endif; ?>
   <div class="row flex">
     <?
@@ -92,7 +86,6 @@ $icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=
           }
         }
 
-
         $result .= "<div class=\"col m6 l4\">";
         $result .= "<div class=\"card\">";
 
@@ -116,7 +109,7 @@ $icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=
 
         $result .= "<div class=\"card-content\">";
         if ($summary || $description) {
-          $result .= "<span class=\"card-title activator\" title=\"Weitere Informationen\">$eventTitle<i class=\"material-icons right\">info</i></span>";
+          $result .= "<span class=\"card-title activator\" title=\"Weitere Informationen\">$eventTitle<i class=\"material-icons right\">info_outline</i></span>";
         } else {
           $result .= "<span class=\"card-title\">$eventTitle</span>";
         }
@@ -139,7 +132,20 @@ $icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=
       $result .= "<p>HTTP request failed: " . $http->getError() . "</p>";
     }
     echo $result;
-
     ?>
   </div>
+  <? if ($page == $events): ?>
+  <div class="row">
+    <div class="col s12  l8 offset-l2">
+      <div class="card-panel">
+        <p><i class="language-url material-icons left">info_outline</i>Alle Termine können Sie auch bequem als iCal-URL in ihrem digitalen Kalender abonnieren.</p>
+        <pre class="language-url"><span class="copyMessage">Kopiert</span><i class="material-icons copyButton" title="URL kopieren">content_copy</i>
+
+ <code class="copiedText language-url"><? echo $icalFeed ?></code>
+
+</pre>
+      </div>
+    </div>
+  </div>
+  <? endif; ?>
 </div>
