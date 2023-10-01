@@ -866,8 +866,6 @@ pre[class*=language-], code[class*=language-] {
 
 pre[class*=language-] {
   padding: 25px 12px 7px 12px;
-  border: solid 1px var(--separator-color);
-  background: var(--background-color-slight-emphasis);
 }
 
 .copyMessage {
@@ -881,7 +879,6 @@ pre[class*=language-] {
 }
 
 .copyMessage, .copyButton {
-  color: var(--font-color-medium);
   position: absolute;
 }
 
@@ -892,16 +889,17 @@ pre[class*=language-] {
 }
 
 .copyMessage, .copyButton {
-  color: var(--font-color-medium);
   position: absolute;
 }
 
-code[class*=language-] {
-  color: var(--font-color-main);
+.info-text {
+  margin-left: 4em;
 }
-
-.language-url.material-icons {
+.info-text .material-icons {
   top: 0;
+  left: -2em;
+  margin-right: -24px; /* icon width */
+  padding-right: 0;
 }
 
 /* Spotlight */
