@@ -101,7 +101,7 @@ $icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=
         $formatter->setPattern('y');
         $result .= "<div class=\"year\">{$formatter->format($startDate)}</div>";
         if (!$isAllDay) {
-          $formatter->setPattern('H.mm');
+          $formatter->setPattern('H:mm');
           $result .= "<div class=\"time\">{$formatter->format($startDate)}</div>";
         }
         $result .= "</div>";
