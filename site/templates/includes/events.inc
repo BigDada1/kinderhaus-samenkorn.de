@@ -9,7 +9,8 @@ $churchDeskApiVersion = $settings->churchdesk_api_version;
 $partnerToken = $settings->churchdesk_api_key;
 $organizationId = $settings->churchdesk_organization_id;
 $parishId = $settings->churchdesk_parish_id;
-$icalFeed = "https://api2.churchdesk.com/ical/resource/$parishId?organizationId=$organizationId&cache=0";
+$resourceId = $settings->churchdesk_resource_id;
+$icalFeed = $pages->findOne("template=event-feed,include=hidden")->httpUrl();
 ?>
 <div class="<? echo $sectionClass ?>">
   <? if ($page != $events): ?>
