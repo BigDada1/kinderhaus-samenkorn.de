@@ -21,13 +21,13 @@ $icalFeed = $pages->findOne("template=event-feed,include=hidden")->httpUrl();
     </div>
   </div>
   <? endif; ?>
-  <div class="row flex">
+  <div class="row simple-cards">
     <?
     $http = new ProcessWire\WireHttp();
     $response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100");
 
     $result = "";
-    $counter = 1;
+    $counter = 0;
     if($response !== false)
     {
       $eventsByDate = [];
@@ -110,9 +110,9 @@ $icalFeed = $pages->findOne("template=event-feed,include=hidden")->httpUrl();
 
         $result .= "<div class=\"card-content\">";
         if ($summary || $description) {
-          $result .= "<span class=\"card-title activator\" title=\"Weitere Informationen\"><i class=\"material-icons right\">info_outline</i>$eventTitle</span>";
+          $result .= "<span class=\"card-title truncate activator\" title=\"Weitere Informationen\"><i class=\"material-icons right\">info_outline</i>$eventTitle</span>";
         } else {
-          $result .= "<span class=\"card-title\">$eventTitle</span>";
+          $result .= "<span class=\"card-title truncate\">$eventTitle</span>";
         }
         $result .= "</div>";
 
