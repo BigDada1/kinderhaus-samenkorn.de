@@ -40,6 +40,10 @@
 
 /* Custom Stylesheet */
 
+:root {
+  --main-color: 79, 96, 86; /* #4f6056 */
+}
+
 .container {
   width: 100%;
 }
@@ -57,8 +61,7 @@
 }
 
 a {
-  color: #2f5aae;
-  /* default color */
+  color: rgb(var(--main-color));
 }
 
 h3 {
@@ -158,8 +161,7 @@ blockquote h6::before {
   font-weight: 600;
   text-transform: uppercase;
   font-size: .8rem;
-  color: #2f5aae;
-  /* default color */
+  color: rgb(var(--main-color));
   text-align: center;
   line-height: 5em;
 }
@@ -264,8 +266,7 @@ table caption {
 }
 
 .section.highlight.major {
-  background-color: #2f5aae;
-  /* default color */
+  background-color: rgb(var(--main-color));
   color: white;
 }
 
@@ -278,8 +279,7 @@ table caption {
 
 /* cards */
 .card .material-icons {
-  color: #2f5aae;
-  /* default color */
+  color: rgb(var(--main-color));
 }
 
 a.card {
@@ -303,7 +303,7 @@ a.card {
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating).mail {
   text-transform: none;
-  color: #2f5aae;
+  color: rgb(var(--main-color));
 }
 
 a.card h5 {
@@ -472,8 +472,7 @@ a.card p.header {
   font-weight: 600;
   text-transform: uppercase;
   font-size: .8rem;
-  color: #2f5aae;
-  /* default color */
+  color: rgb(var(--main-color));
 }
 
 @media only screen and (min-width: 601px) {
@@ -524,8 +523,7 @@ a.card p.header {
   position: absolute;
   top: .5rem;
   right: .5rem;
-  background: #2f5aae;
-  /* default color */
+  background: rgb(var(--main-color));
   color: white;
   line-height: 22px;
   min-width: 50px;
@@ -674,20 +672,17 @@ textarea {
 }
 
 .btn {
-  background-color: #2f5aae;
-  /* default color */
+  background-color: rgb(var(--main-color));
 }
 
 .btn:hover {
-  background-color: rgba(0, 111, 184, 0.8);
-  /* default color */
+  background-color: rgba(var(--main-color), 0.8);
 }
 
 /* Navigation + Toolbar + Branding */
 nav {
   height: 128px;
-  background-color: #2f5aae;
-  /* default color */
+  background-color: rgb(var(--main-color));
 }
 
 @media only screen and (max-width : 600px) {
@@ -738,8 +733,7 @@ nav a.sidenav-trigger {
 
 .dropdown-content li>a,
 .dropdown-content li>span {
-  color: #2f5aae;
-  /* default color */
+  color: rgb(var(--main-color));
 }
 
 .sidenav .divider {
@@ -781,8 +775,7 @@ nav li.active ul {
 .sidenav .collapsible-body>ul:not(.collapsible)>li.active,
 .slider .indicators .indicator-item-btn.active,
 footer.page-footer {
-  background-color: #2f5aae;
-  /* default color */
+  background-color: rgb(var(--main-color));
 }
 
 .sidenav .collapsible-header {
@@ -824,8 +817,7 @@ footer {
 }
 
 footer.page-footer {
-  background-color: #2f5aae;
-  /* default color */
+  background-color: rgb(var(--main-color));
 }
 
 footer.page-footer .col ul>li,
