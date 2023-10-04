@@ -189,11 +189,14 @@ td .material-icons {
   padding-left: 2.7rem;
 }
 
+/* tables */
+
 table {
   margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-td:first-child {
+table:not(.highlight) td:first-child {
   text-transform: uppercase;
   font-size: .8rem;
   font-weight: 800;
@@ -203,6 +206,46 @@ table caption {
   padding-top: 2rem;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+td[class*=month-] {
+  width: 1em;
+  padding: 0;
+}
+
+td.date {
+  width: 10.5em;
+}
+
+td.location {
+  width: 12em;
+}
+
+/* month color codes */
+
+td.month-1,
+tr.month-7 {
+  background-color: #f2849e80;
+}
+td.month-2,
+td.month-8 {
+  background-color: #7ecaf680;
+}
+td.month-3,
+td.month-9 {
+  background-color: #7bd0c180;
+}
+td.month-4,
+td.month-10 {
+  background-color: #c75b9b80;
+}
+td.month-5,
+td.month-11 {
+  background-color: #ae85ca80;
+}
+td.month-6,
+td.month-12 {
+  background-color: #8499e780;
 }
 
 /* carousel */
