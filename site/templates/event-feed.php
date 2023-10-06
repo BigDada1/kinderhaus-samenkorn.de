@@ -66,6 +66,7 @@ if($response !== false)
     }
 
     $eventId = $event["id"];
+    $isAllDay = $event["allDay"];
     $startDate = str_replace("-", "", $event["startDate"]);
     $startDate = str_replace(".", "", $startDate);
     $startDate = str_replace(":", "", $startDate);
@@ -74,6 +75,20 @@ if($response !== false)
     $endDate = str_replace(".", "", $endDate);
     $endDate = str_replace(":", "", $endDate);
     $endDate = str_replace("000Z", "Z", $endDate);
+    if ($isAllDay) {
+      $startDate = substr($startDate, 0, 8);
+      $endDate = substr($endDate, 0, 8);
+      if ($startDate == $endDate) {
+        $startDate = "DTSTART;VALUE=DATE:$startDate";
+        $endDate = "";
+      } else {
+        $startDate = "DTSTART;VALUE=DATE:$startDate";
+        $endDate = "DTEND;VALUE=DATE:$endDate";
+      }
+    } else {
+      $startDate = "DTSTART:$startDate";
+      $endDate = "DTEND:$endDate";
+    }
     $createdDate = str_replace("-", "", $event["createdAt"]);
     $createdDate = str_replace(".", "", $createdDate);
     $createdDate = str_replace(":", "", $createdDate);
@@ -95,8 +110,10 @@ if($response !== false)
     echo "BEGIN:VEVENT\r\n";
     echo "UID:$eventId\r\n";
     echo "DTSTAMP:$createdDate\r\n";
-    echo "DTSTART:$startDate\r\n";
-    echo "DTEND:$endDate\r\n";
+    echo "$startDate\r\n";
+    if ($endDate != "") {
+      echo "$endDate\r\n";
+    }
     echo "SUMMARY:$eventTitle\r\n";
     echo "SEQUENCE:$updatedDate\r\n";
     echo "LOCATION:$location\r\n";
