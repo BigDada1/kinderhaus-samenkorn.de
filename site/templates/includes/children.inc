@@ -37,7 +37,7 @@
 
 <? /* Special events layout for events and events parent */ ?>
 <? if ($page == $events || $page == $events->parent): ?>
-<? include("./events.inc"); ?>
+<? include("./events-table.inc"); ?>
 <? endif; ?>
 
 <? /* Default layout */ ?>
