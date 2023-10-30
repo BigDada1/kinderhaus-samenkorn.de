@@ -13,8 +13,7 @@
     </div>
   </div>
 
-  <? /* Skip contents with missing first body or first icon list */ ?>
-  <? if ($page->content && $page->content->count() && ($page->content->first()->body || $page->content->first()->icon_list->count())): ?>
+  <? if ($page->content && $page->content->count()): ?>
 
   <? foreach($page->content as $content): ?>
   <div class="row">
