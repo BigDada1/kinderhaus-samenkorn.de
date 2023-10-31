@@ -100,6 +100,7 @@
   <? endif; ?>
 </div>
 
+<? include("./sponsors.inc"); ?>
 <? include("./children.inc"); ?>
 <? include("./gallery.inc"); ?>
 <? include("./back-to-parent.inc"); ?>

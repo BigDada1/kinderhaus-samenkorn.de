@@ -694,19 +694,25 @@ a.action:hover .material-icons {
 }
 
 /* flex stuff: same heights for row children */
-@media only screen and (min-width: 993px) {
-  .flex {
-    display: flex;
-    flex-wrap: wrap;
-  }
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .flex .col {
-    margin-bottom: 20px;
-  }
+.flex .col {
+  margin-bottom: 20px;
+}
 
-  .flex .col .card {
-    height: 100%;
-  }
+.flex .col .card {
+  height: 100%;
+}
+
+.flex .col {
+  margin-bottom: 20px;
+}
+
+.flex .col .card {
+  height: 100%;
 }
 
 textarea {
