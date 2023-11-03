@@ -8,7 +8,10 @@
   <meta name="description" content="<?php echo $siteDescription ?>">
   <meta property="og:title" content="<?php echo $siteTitle ?>">
   <meta property="og:description" content="<?php echo $siteDescription ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image" content="<?php echo $siteImage->size(1200, 630)->HTTPURL ?>">
+  <meta property="og:url" content="<?php echo $page->HTTPURL ?>">
   <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/css/style.min.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/css/prism.css" type="text/css" rel="stylesheet" media="screen">
