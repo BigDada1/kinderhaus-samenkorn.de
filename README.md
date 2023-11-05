@@ -22,3 +22,4 @@ This is the **Kinderhaus Samenkorn** website dev repo.
 * [SVG Minifier](https://www.svgminify.com)
 * [W3C Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.kinderhaus-samenkorn.de)
 * [iCal Validator](https://icalendar.org/validator.html?url=https://kinderhaus-samenkorn.de/ical)
+* [Newsfeed Validator](https://validator.w3.org/feed/)

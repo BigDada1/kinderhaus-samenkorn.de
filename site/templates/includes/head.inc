@@ -24,6 +24,10 @@
   <meta name="msapplication-TileColor" content="#789A01">
   <meta name="theme-color" content="#ffffff">
 
+  <? if ($newsFeed): ?>
+  <link rel="alternate" type="application/rss+xml" title="<?php echo $settings->site_title . " " . $articles->title ?>" href="<?php echo $newsFeed->url ?>" />
+  <? endif; ?>
+
   <? if ($matomoUrl): ?>
   <script>
     var _paq = window._paq = window._paq || [];
