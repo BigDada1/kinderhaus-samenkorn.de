@@ -58,9 +58,9 @@ setlocale(LC_ALL, 'de_DE.UTF-8');
  *
  */
 $config->dbHost = 'localhost';
-$config->dbName = 'xxxxxxxx';
-$config->dbUser = 'xxxxxxxx';
-$config->dbPass = 'xxxxxxxx';
+$config->dbName = 'd03ba169';
+$config->dbUser = 'd03ba169';
+$config->dbPass = 'Yspandpq5hKD6Abatrww';
 $config->dbPort = '3306';
 
 /**
@@ -117,7 +117,7 @@ $config->installed = 1695836743;
  * Installer: HTTP Hosts Whitelist
  *
  */
-$config->httpHosts = array('chenker.kinderhaus-samenkorn.de', 'www.kinderhaus-samenkorn.de');
+$config->httpHosts = array('kinderhaus-samenkorn.de', 'www.kinderhaus-samenkorn.de', 'chenker.kinderhaus-samenkorn.de');
 
 
 /**
@@ -128,7 +128,7 @@ $config->httpHosts = array('chenker.kinderhaus-samenkorn.de', 'www.kinderhaus-sa
  * Should be true for development sites and false for live/production sites.
  *
  */
-$config->debug = true;
+$config->debug = false;
 
 /**
  * Increase the PHP memory_limit
