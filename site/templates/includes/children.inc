@@ -36,7 +36,7 @@
 <? endif; ?>
 
 <? /* Special events layout for events and events parent */ ?>
-<? if ($page == $events || $page == $events->parent): ?>
+<? if ($page->template == "events" || $page == $events->parent): ?>
 <? include("./events-table.inc"); ?>
 <? endif; ?>
 

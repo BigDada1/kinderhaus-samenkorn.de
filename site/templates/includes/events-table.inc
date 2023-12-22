@@ -1,9 +1,9 @@
 <?
 $sectionClass = "section highlight minor";
 $eventLimit = 6;
-if ($page == $events) {
+if ($page->template == "events") {
   $sectionClass = "section";
-  $eventLimit = 30;
+  $eventLimit = 100;
 }
 $churchDeskApiVersion = $settings->churchdesk_api_version;
 $partnerToken = $settings->churchdesk_api_key;
@@ -11,9 +11,10 @@ $organizationId = $settings->churchdesk_organization_id;
 $parishId = $settings->churchdesk_parish_id;
 $resourceId = $settings->churchdesk_resource_id;
 $icalFeed = $pages->findOne("template=event-feed,include=hidden")->httpUrl();
+$categoryFilter = $page->churchdesk_category_filter;
 ?>
 <div class="<? echo $sectionClass ?>">
-  <? if ($page != $events): ?>
+  <? if ($page == $home): ?>
   <div class="row">
     <div class="col">
       <a class="action right" href="<? echo $events->url ?>">Alle <span class="hide-on-small-only">anzeigen</span></a>
@@ -35,102 +36,122 @@ $icalFeed = $pages->findOne("template=event-feed,include=hidden")->httpUrl();
         <tbody>
     <?
     $http = new ProcessWire\WireHttp();
-    $response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100");
 
-    $result = "";
-    $counter = 0;
-    if($response !== false)
+    $mergedEvents = [];
+    for($pageMarker = 0; $pageMarker < 10; $pageMarker++)
     {
-      $eventsByDate = [];
-      foreach ($response as $event)
+      $response = $http->getJSON("https://api2.churchdesk.com/api/$churchDeskApiVersion/events?partnerToken=$partnerToken&organizationId=$organizationId&itemsNumber=100&pageMarker=$pageMarker");
+      if($response !== false)
       {
-        $parishes = $event["parishes"];
-        $isOwnParish = false;
-        foreach ($parishes as $parish)
+        if(sizeof($response) == 0)
         {
-          if ($parish["id"] == $parishId)
+          break;
+        }
+        foreach ($response as $event)
+        {
+          // limit events to the next $eventLimit
+          if(sizeof($mergedEvents) < $eventLimit)
           {
-            $isOwnParish = true;
-            break;
+            $parishes = $event["parishes"];
+            $categories = $event["categories"];
+            foreach ($parishes as $parish)
+            {
+              if ($parish["id"] != $parishId)
+              {
+                break;
+              }
+              if ($categories && $categoryFilter)
+              {
+                foreach ($categories as $category)
+                {
+                  if ($category["title"] == $categoryFilter)
+                  {
+                    array_push($mergedEvents, $event);
+                    break;
+                  }
+                }
+              }
+              else
+              {
+                array_push($mergedEvents, $event);
+              }
+            }
           }
         }
-        if (!$isOwnParish)
-        {
-          continue;
-        }
-        $counter++;
-        if($counter > $eventLimit) {
-          continue;
-        }
-        $now = new \DateTimeImmutable("now");
-        $tomorrow = new \DateTime("now");
-        $tomorrow->modify('+1 day');
-        $rawStartDate = new \DateTimeImmutable($event["startDate"]);
-        $rawEndDate = new \DateTimeImmutable($event["endDate"]);
-        $formatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
-
-        $isAllDay = $event["allDay"];
-        $eventTitle = $event["title"];
-        $summary = $event["summary"];
-        $description = $event["description"];
-        $description = str_replace("<p>", "", $description);
-        $description = str_replace("</p>", "<br>", $description);
-        $locationObj = $event["locationObj"];
-        $location = $event["locationName"];
-        // if ($locationObj) {
-        //   $location .= "<br>{$locationObj["address"]}, {$locationObj["zipcode"]} {$locationObj["city"]}";
-        // }
-        $formatter->setPattern('EEEEEE d. MMMM');
-        $startDate = $formatter->format($rawStartDate);
-        if ($startDate == $formatter->format($now)) {
-          $startDate = "Heute";
-        } elseif ($startDate == $formatter->format($tomorrow)) {
-          $startDate = "Morgen";
-        }
-        $endDate = $formatter->format($rawEndDate);
-        if ($endDate == $formatter->format($now)) {
-          $endDate = "Heute";
-        } elseif ($endDate == $formatter->format($tomorrow)) {
-          $endDate = "Morgen";
-        }
-
-        $date = $startDate;
-        if (!$isAllDay) {
-          $formatter->setPattern('H.mm');
-          $date .= "<br>{$formatter->format($rawStartDate)} Uhr";
-        }
-        if($startDate != $endDate) {
-          $date .= "&nbsp;–<br>$endDate";
-          if (!$isAllDay) {
-            $date .= "<br>{$formatter->format($rawEndDate)} Uhr";
-          }
-        }
-        $formatter->setPattern('M');
-        $monthNumber = $formatter->format($rawStartDate);
-        $formatter->setPattern('MMMM');
-        $monthName = $formatter->format($rawStartDate);
-
-        $result .= "<tr>";
-        $result .= "<td class=\"month-$monthNumber\" title=\"$monthName\"> </td>";
-        $result .= "<td class=\"date\">$date</td>";
-
-        $result .= "<td>";
-        $result .= "<strong>$eventTitle</strong>";
-        if ($summary) {
-          $result .= "<br>$summary";
-        }
-        if ($description) {
-          $result .= "<br>$description";
-        }
-        $result .= "</td>";
-
-        $result .= "<td class=\"location\">$location</td>";
-        $result .= "</tr>";
+      }
+      else
+      {
+        echo "<p>HTTP request failed: " . $http->getError() . "</p>";
       }
     }
-    else
+
+    $result = "";
+    foreach ($mergedEvents as $event)
     {
-      $result .= "<p>HTTP request failed: " . $http->getError() . "</p>";
+      $now = new \DateTimeImmutable("now");
+      $tomorrow = new \DateTime("now");
+      $tomorrow->modify('+1 day');
+      $rawStartDate = new \DateTimeImmutable($event["startDate"]);
+      $rawEndDate = new \DateTimeImmutable($event["endDate"]);
+      $formatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT);
+
+      $isAllDay = $event["allDay"];
+      $eventTitle = $event["title"];
+      $summary = $event["summary"];
+      $description = $event["description"];
+      $description = str_replace("<p>", "", $description);
+      $description = str_replace("</p>", "<br>", $description);
+      $locationObj = $event["locationObj"];
+      $location = $event["locationName"];
+      // if ($locationObj) {
+      //   $location .= "<br>{$locationObj["address"]}, {$locationObj["zipcode"]} {$locationObj["city"]}";
+      // }
+      $formatter->setPattern('EEEEEE d. MMMM');
+      $startDate = $formatter->format($rawStartDate);
+      if ($startDate == $formatter->format($now)) {
+        $startDate = "Heute";
+      } elseif ($startDate == $formatter->format($tomorrow)) {
+        $startDate = "Morgen";
+      }
+      $endDate = $formatter->format($rawEndDate);
+      if ($endDate == $formatter->format($now)) {
+        $endDate = "Heute";
+      } elseif ($endDate == $formatter->format($tomorrow)) {
+        $endDate = "Morgen";
+      }
+
+      $date = $startDate;
+      if (!$isAllDay) {
+        $formatter->setPattern('H.mm');
+        $date .= "<br>{$formatter->format($rawStartDate)} Uhr";
+      }
+      if($startDate != $endDate) {
+        $date .= "&nbsp;–<br>$endDate";
+        if (!$isAllDay) {
+          $date .= "<br>{$formatter->format($rawEndDate)} Uhr";
+        }
+      }
+      $formatter->setPattern('M');
+      $monthNumber = $formatter->format($rawStartDate);
+      $formatter->setPattern('MMMM');
+      $monthName = $formatter->format($rawStartDate);
+
+      $result .= "<tr>";
+      $result .= "<td class=\"month-$monthNumber\" title=\"$monthName\"> </td>";
+      $result .= "<td class=\"date\">$date</td>";
+
+      $result .= "<td>";
+      $result .= "<strong>$eventTitle</strong>";
+      if ($summary) {
+        $result .= "<br>$summary";
+      }
+      if ($description) {
+        $result .= "<br>$description";
+      }
+      $result .= "</td>";
+
+      $result .= "<td class=\"location\">$location</td>";
+      $result .= "</tr>";
     }
     echo $result;
     ?>
@@ -138,7 +159,7 @@ $icalFeed = $pages->findOne("template=event-feed,include=hidden")->httpUrl();
       </table>
     </div>
   </div>
-  <? if ($page == $events): ?>
+  <? if ($page->template == "events"): ?>
   <div class="row">
     <div class="col s12  l8 offset-l2">
       <div class="card-panel">
