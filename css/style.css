@@ -224,7 +224,7 @@ td.location {
 /* month color codes */
 
 td.month-1,
-tr.month-7 {
+td.month-7 {
   background-color: #f2849e80;
 }
 td.month-2,
