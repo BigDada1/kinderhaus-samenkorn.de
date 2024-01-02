@@ -21,6 +21,11 @@ if ($page->content && $page->content->count())
 $siteLogo = $settings->site_logo;
 $siteLogo = str_replace("%site_name%", $settings->site_title, $siteLogo);
 $matomoUrl = $settings->matomo_url;
+$matomoSiteId = $settings->matomo_site_id;
+if (!$matomoSiteId)
+{
+  $matomoSiteId = 1;
+}
 $navMobileLogo = str_replace("%fill%", "#000000", $siteLogo);
 $navMobileLogo = str_replace("st0", "st1", $navMobileLogo);
 $siteLogo = str_replace("%fill%", "#FFFFFF", $siteLogo);
