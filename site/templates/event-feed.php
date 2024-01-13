@@ -103,6 +103,7 @@ foreach ($mergedEvents as $event)
   $updatedDate = str_replace(":", "", $updatedDate);
   $updatedDate = str_replace("000Z", "", $updatedDate);
   $updatedDate = str_replace("T", "", $updatedDate);
+  $sequence = substr($updatedDate, 0, 10); // sequence is integer: limit to 10 digits
 
   $eventTitle = $event["title"];
   $summary = $event["summary"];
@@ -120,7 +121,7 @@ foreach ($mergedEvents as $event)
     echo "$endDate\r\n";
   }
   echo "SUMMARY:$eventTitle\r\n";
-  echo "SEQUENCE:$updatedDate\r\n";
+  echo "SEQUENCE:$sequence\r\n";
   echo "LOCATION:$location\r\n";
   echo "DESCRIPTION:$summary\r\n";
   echo "URL;VALUE=URI:{$home->httpUrl()}\r\n";
