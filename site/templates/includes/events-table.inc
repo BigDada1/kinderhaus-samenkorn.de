@@ -98,6 +98,7 @@ $categoryFilter = $page->churchdesk_category_filter;
       $isAllDay = $event["allDay"];
       $eventTitle = $event["title"];
       $summary = $event["summary"];
+      $contributor = $event["contributor"];
       $description = $event["description"];
       $description = str_replace("<p>", "", $description);
       $description = str_replace("</p>", "<br>", $description);
@@ -144,6 +145,9 @@ $categoryFilter = $page->churchdesk_category_filter;
       $result .= "<strong>$eventTitle</strong>";
       if ($summary) {
         $result .= "<br>$summary";
+      }
+      if ($contributor) {
+        $result .= "<br>Mitwirkende: $contributor";
       }
       if ($description) {
         $result .= "<br>$description";
