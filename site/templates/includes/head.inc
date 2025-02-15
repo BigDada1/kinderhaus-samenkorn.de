@@ -16,13 +16,13 @@
   <link href="/css/style.min.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/css/prism.css" type="text/css" rel="stylesheet" media="screen">
   <script src="/js/spotlight.bundle.js"></script>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#789A01">
-  <meta name="msapplication-TileColor" content="#789A01">
-  <meta name="theme-color" content="#ffffff">
+  
+<link rel="icon" type="image/png" href="/favicon-v2/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon-v2/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon-v2/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-v2/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Kinderhaus" />
+  <link rel="manifest" href="/favicon-v2/site.webmanifest" />
 
   <? if ($newsFeed): ?>
   <link rel="alternate" type="application/rss+xml" title="<?php echo $settings->site_title . " " . $articles->title ?>" href="<?php echo $newsFeed->url ?>" />
